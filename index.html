@@ -13,20 +13,140 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@300;400;600&family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    
-    <!-- CSS para depoimentos -->
     <style>
-        .testimonials__card {
-            display: none;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f7fe;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section__title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #6a4c9c;
+        }
+
+        .section__subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #8b5fbf;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(139, 95, 191, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .nav__logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #6a4c9c;
+            font-size: 1.5rem;
+        }
+
+        .nav__logo-img {
+            height: 40px;
+        }
+
+        .nav__list {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav__link {
+            text-decoration: none;
+            color: #5d4a75;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav__link:hover {
+            color: #8b5fbf;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
             background: linear-gradient(135deg, #f8f4ff 0%, #f0e6ff 100%);
-            border: 3px solid #8b5fbf;
+            position: relative;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%238b5fbf' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .testimonials__container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonials__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonials__card {
+            background: white;
             border-radius: 20px;
             padding: 2rem;
-            box-shadow: 0 10px 30px rgba(139, 95, 191, 0.2);
+            box-shadow: 0 10px 30px rgba(139, 95, 191, 0.15);
+            border: 2px solid #e6dcf5;
             position: relative;
-            overflow: hidden;
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonials__card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(139, 95, 191, 0.25);
+            border-color: #8b5fbf;
         }
 
         .testimonials__card::before {
@@ -37,112 +157,168 @@
             right: 0;
             height: 4px;
             background: linear-gradient(90deg, #8b5fbf, #b39ddb, #8b5fbf);
+            border-radius: 20px 20px 0 0;
         }
 
-        .testimonials__card::after {
-            content: '"';
+        .testimonials__header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonials__img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #8b5fbf;
+            padding: 2px;
+            background: white;
+            margin-right: 1rem;
+        }
+
+        .testimonials__info {
+            flex: 1;
+        }
+
+        .testimonials__name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: #6a4c9c;
+            margin-bottom: 0.2rem;
+        }
+
+        .testimonials__client {
+            color: #8b5fbf;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .testimonials__description {
+            color: #5d4a75;
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+
+        .testimonials__stars {
+            color: #ffd700;
+            font-size: 1.1rem;
+            text-align: right;
+        }
+
+        .testimonials__quote {
             position: absolute;
-            top: 20px;
-            right: 25px;
+            top: 15px;
+            right: 20px;
             font-size: 4rem;
             color: #8b5fbf;
             opacity: 0.1;
             font-family: 'Dancing Script', cursive;
         }
 
-        .testimonials__card.active {
-            display: block;
-            animation: fadeIn 0.8s ease;
-        }
-
-        .testimonials__card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(139, 95, 191, 0.3);
-        }
-
-        .testimonials__img {
-            border: 3px solid #8b5fbf;
-            border-radius: 50%;
-            padding: 4px;
-            background: white;
-            box-shadow: 0 5px 15px rgba(139, 95, 191, 0.2);
-        }
-
-        .testimonials__img img {
-            border-radius: 50%;
-        }
-
-        .testimonials__name {
-            color: #6a4c9c;
-            font-weight: 700;
-        }
-
-        .testimonials__client {
-            color: #8b5fbf;
-            font-weight: 600;
-        }
-
-        .testimonials__description {
-            color: #5d4a75;
-            line-height: 1.6;
-            font-style: italic;
-            position: relative;
-            z-index: 1;
-        }
-
-        .testimonials__stars {
-            color: #ffd700;
-            text-shadow: 0 2px 4px rgba(139, 95, 191, 0.3);
-        }
-
-        .testimonials__button {
-            background: #8b5fbf;
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #6a4c9c 0%, #8b5fbf 100%);
             color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer__container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer__logo {
             display: flex;
             align-items: center;
+            gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer__logo-img {
+            height: 40px;
+        }
+
+        .footer__description {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .footer__social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer__social-link {
+            display: inline-flex;
+            align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(139, 95, 191, 0.3);
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
         }
 
-        .testimonials__button:hover {
-            background: #6a4c9c;
-            transform: scale(1.1);
+        .footer__social-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+        .footer__title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer__list {
+            list-style: none;
+        }
+
+        .footer__list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer__link {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .footer__link:hover {
+            opacity: 1;
+        }
+
+        .footer__copy {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section__title {
+                font-size: 2rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            
+            .testimonials__grid {
+                grid-template-columns: 1fr;
             }
-        }
-
-        /* Efeito de flores nos cantos */
-        .testimonials__card .flower-corner {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            opacity: 0.1;
-        }
-
-        .testimonials__card .flower-top-left {
-            top: 10px;
-            left: 10px;
-        }
-
-        .testimonials__card .flower-bottom-right {
-            bottom: 10px;
-            right: 10px;
-            transform: rotate(180deg);
+            
+            .nav__list {
+                display: none;
+            }
         }
     </style>
     
@@ -158,373 +334,216 @@
                 <span>Aline Vaiolet</span>
             </div>
             
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item">
-                        <a href="#home" class="nav__link active-link">Início</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#about" class="nav__link">Sobre</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#services" class="nav__link">Serviços</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#methodology" class="nav__link">Metodologia</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#testimonials" class="nav__link">Depoimentos</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#contact" class="nav__link">Contato</a>
-                    </li>
-                </ul>
-                <div class="nav__close" id="nav-close">
-                    <i class="fas fa-times"></i>
-                </div>
-            </div>
-            
-            <div class="nav__toggle" id="nav-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="#home" class="nav__link">Início</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#about" class="nav__link">Sobre</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#services" class="nav__link">Serviços</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#methodology" class="nav__link">Metodologia</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#testimonials" class="nav__link">Depoimentos</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#contact" class="nav__link">Contato</a>
+                </li>
+            </ul>
         </nav>
     </header>
 
     <!-- Main -->
     <main class="main">
-        <!-- Home -->
-        <section class="home section" id="home">
-            <div class="home__container container grid">
-                <div class="home__content">
-                    <h1 class="home__title">
-                        Terapia quântica feminina
-                    </h1>
-                    <p class="home__description">
-                        Reconecte-se com a sua Essência.
-                    </p>
-                    <p class="home__description">
-                        Minha missão é acolher mulheres em seus processos de autoconhecimento, cura e reconexão com a própria essência. Nos atendimentos ofereço ferramentas vibracionais que auxiliam a liberar bloqueios, transmutar energias densas e despertar a potência criadora que habita em cada uma de nós.
-                    </p>
-                    <div class="home__buttons">
-                        <a href="https://contate.me/5579999805488" target="_blank" class="button button--primary">
-                            <i class="fas fa-calendar-alt"></i>
-                            Agendar Consulta
-                        </a>
-                        <a href="#about" class="button button--primary">
-                            <i class="fas fa-arrow-down"></i>
-                            Saiba Mais
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="home__img">
-                    <img src="images/hero_image_v2.jpg" alt="Aline Vaiolet - Terapia Quântica Feminina" class="home__img-main">
-                </div>
-            </div>
-            
-            <!-- Scroll indicator -->
-            <div class="home__scroll">
-                <a href="#about" class="home__scroll-button">
-                    <i class="fas fa-mouse"></i>
-                    <span class="home__scroll-name">Role para baixo</span>
-                    <i class="fas fa-arrow-down home__scroll-arrow"></i>
-                </a>
-            </div>
-        </section>
-
-        <!-- About -->
-        <section class="about section" id="about">
-            <div class="about__container container grid">
-                <div class="about__img">
-                    <img src="images/about_image_v2.jpg" alt="Aline Vaiolet" class="about__img-main">
-                </div>
-                
-                <div class="about__content">
-                    <h2 class="section__title">Quem Sou Eu</h2>
-                    <p class="about__description">
-                        Sou Aline Vaiolet, Terapeuta Quântica Vibracional, Guardiã de Saberes Ancestrais e Estelares, facilitadora de processos de cura, expansão da consciência que se manifesta no realinhamento entre alma, corpo e universo. Com formação acadêmica e trajetória na área humana, trilho hoje um caminho que une ciência, espiritualidade e práticas energéticas para o cuidado integral do ser. Atuo com foco no equilíbrio do corpo, mente e espírito, ancorando frequências de cura através de uma abordagem sensível, transmutadora e vibracional.
-                    </p>
-                    
-                    <div class="about__info">
-                        <div class="about__info-item">
-                            <i class="fas fa-star-of-life"></i>
-                            <div>
-                                <h3>Guardiã de Saberes</h3>
-                                <span>Ancestrais e Estelares</span>
-                            </div>
-                        </div>
-                        <div class="about__info-item">
-                            <i class="fas fa-hand-holding-heart"></i>
-                            <div>
-                                <h3>Foco</h3>
-                                <span>Cuidado Integral do Ser</span>
-                            </div>
-                        </div>
-                        <div class="about__info-item">
-                            <i class="fas fa-infinity"></i>
-                            <div>
-                                <h3>Abordagem</h3>
-                                <span>Ciência, Espiritualidade e Energia</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services -->
-        <section class="services section" id="services">
-            <h2 class="section__title">Caminhos para sua Transformação</h2>
-            <p class="section__subtitle">Descubra qual terapia ressoa com sua alma</p>
-            
-            <div class="services__container container grid">
-                <!-- Cards de serviços (mantidos do código anterior) -->
-                <article class="services__card">
-                    <div class="services__card-img">
-                        <img src="images/triagem_cosmica.jpg" alt="Triagem Vibracional Cósmica">
-                    </div>
-                    <div class="services__card-content">
-                        <h3 class="services__card-title">Triagem Vibracional Cósmica</h3>
-                        <p class="services__card-description">
-                            Leitura energética para identificar campos que precisam de atenção e as ferramentas mais adequadas para o momento.
-                        </p>
-                        <ul class="services__card-benefits">
-                            <li><i class="fas fa-check"></i> Clareza sobre necessidades</li>
-                            <li><i class="fas fa-check"></i> Direcionamento terapêutico</li>
-                            <li><i class="fas fa-check"></i> Personalização do atendimento</li>
-                        </ul>
-                        <div class="services__card-footer">
-                            <span class="services__card-price">Consultar</span>
-                            <span class="services__card-duration">30 min</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Outros cards de serviços... -->
-            </div>
-        </section>
-
-        <!-- Methodology -->
-        <section class="methodology section" id="methodology">
-            <h2 class="section__title">Objetivo dos Atendimentos</h2>
-            <p class="section__subtitle">Cuidando de todas as dimensões do seu ser</p>
-            
-            <div class="methodology__container container grid">
-                <div class="methodology__content">
-                    <div class="methodology__item">
-                        <div class="methodology__icon">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <div class="methodology__text">
-                            <h3 class="methodology__title">Cura e Expansão</h3>
-                            <p class="methodology__description">
-                                Meus atendimentos são focados em acolher e cuidar das dimensões física, emocional, mental e espiritual. Através de uma abordagem sensível e transmutadora, busco ativar suas memórias estelares e códigos de luz, promovendo equilíbrio energético e bem-estar integral.
-                            </p>
-                            <p class="methodology__description">
-                                O objetivo é reconectar você ao seu propósito de alma, liberando padrões limitantes e curando dores ancestrais, para que você possa manifestar sua essência mais pura e viver em plenitude.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="methodology__img">
-                    <img src="images/about_image_v2.jpg" alt="Metodologia de Atendimento" class="methodology__img-main">
-                </div>
-            </div>
-        </section>
-
         <!-- Testimonials -->
         <section class="testimonials section" id="testimonials">
             <h2 class="section__title">Transformações Reais</h2>
-            <p class="section__subtitle">Histórias de quem encontrou sua luz interior</p>
-
-            <div class="testimonials__container container">
-                <div class="testimonials__content">
-                    <article class="testimonials__card">
-                        <div class="flower-corner flower-top-left">
-                            <i class="fas fa-star" style="color: #8b5fbf; font-size: 2rem;"></i>
-                        </div>
-                        <div class="flower-corner flower-bottom-right">
-                            <i class="fas fa-star" style="color: #8b5fbf; font-size: 2rem;"></i>
-                        </div>
-                        <div class="testimonials__img">
-                            <img src="images/depoimento_1.jpg" alt="A.O">
-                        </div>
-                        <div class="testimonials__data">
-                            <h3 class="testimonials__name">A.O</h3>
-                            <span class="testimonials__client">Cliente</span>
-                            <p class="testimonials__description">
-                                "Conheci o trabalho da Terapeuta Aline Vaiolet, naquele momento eu estava com algumas dúvidas e pude ter uma melhor clareza emocional. Sentir uma paz espiritual que me trouxe um bem-estar. Só tenho a agradecer pela oportunidade de me acolher no meu momento de crise de ansiedade e me ajudar a olhar para algumas questões de ordem pessoal."
-                            </p>
-                            <div class="testimonials__stars">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="testimonials__card">
-                        <div class="flower-corner flower-top-left">
-                            <i class="fas fa-heart" style="color: #8b5fbf; font-size: 2rem;"></i>
-                        </div>
-                        <div class="flower-corner flower-bottom-right">
-                            <i class="fas fa-heart" style="color: #8b5fbf; font-size: 2rem;"></i>
-                        </div>
-                        <div class="testimonials__img">
-                            <img src="images/depoimento_2.jpg" alt="V.R">
-                        </div>
-                        <div class="testimonials__data">
-                            <h3 class="testimonials__name">V.R</h3>
-                            <span class="testimonials__client">Cliente</span>
-                            <p class="testimonials__description">
-                                "Gostei muito da Terapia Multidimensional porque foi uma experiência bem diferente do que estava acostumada em termos de terapia. Eu estava exausta e foi como se as minhas baterias tivessem sido recarregadas. Durante o processo, além de um relaxamento profundo, percebi que meu corpo parecia dialogar com o trabalho energético que estava sendo feito. E o mais incrível foi que a Aline, ao final, trouxe percepções que casavam perfeitamente com o que eu estava sentindo naquele momento. Foi uma sessão muito bonita de conexão, autocuidado e autoconhecimento. Estou ansiosa para marcar outra! 🥰"
-                            </p>
-                            <div class="testimonials__stars">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="testimonials__card">
-                        <div class="flower-corner flower-top-left">
-                            <i class="fas fa-feather" style="color: #8b5fbf; font-size: 2rem;"></i>
-                        </div>
-                        <div class="flower-corner flower-bottom-right">
-                            <i class="fas fa-feather" style="color: #8b5fbf; font-size: 2rem;"></i>
-                        </div>
-                        <div class="testimonials__img">
-                            <img src="images/depoimento_3.jpg" alt="A.S">
-                        </div>
-                        <div class="testimonials__data">
-                            <h3 class="testimonials__name">A.S</h3>
-                            <span class="testimonials__client">Cliente</span>
-                            <p class="testimonials__description">
-                                "Fiz uma sessão de Mesa Radiônica e foi incrível! Trabalho feito com uma sensibilidade única para identificar bloqueios energéticos e trazer clareza e equilíbrio. Se você busca autoconhecimento e bem-estar, recomendo muito o trabalho."
-                            </p>
-                            <div class="testimonials__stars">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Os outros 6 depoimentos seguem o mesmo padrão -->
-                    <article class="testimonials__card">
-                        <div class="flower-corner flower-top-left">
-                            <i class="fas fa-spa" style="color: #8b5fbf; font-size: 2rem;"></i>
-                        </div>
-                        <div class="flower-corner flower-bottom-right">
-                            <i class="fas fa-spa" style="color: #8b5fbf; font-size: 2rem;"></i>
-                        </div>
-                        <div class="testimonials__img">
-                            <img src="images/depoimento_4.jpg" alt="S.M">
-                        </div>
-                        <div class="testimonials__data">
-                            <h3 class="testimonials__name">S.M</h3>
-                            <span class="testimonials__client">Cliente</span>
-                            <p class="testimonials__description">
-                                "Seriedade, compromisso e empatia destacam-se nas inúmeras qualidades da terapeuta holística Aline Vaiolet. Costumo dizer que ela é 'uma bruxa' para o bem, devido a sensibilidade que transborda em seus atendimentos. Trabalho, alma, mente e coração. Super recomendo!"
-                            </p>
-                            <div class="testimonials__stars">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Continue com os outros depoimentos... -->
-
-                </div>
-
-                <div class="testimonials__navigation">
-                    <button class="testimonials__button testimonials__button--prev">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="testimonials__button testimonials__button--next">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section class="contact section" id="contact">
-            <h2 class="section__title">Agende sua sessão</h2>
-            <p class="section__subtitle">Sua jornada de transformação começa aqui</p>
+            <p class="section__subtitle">Histórias de quem encontrou sua luz interior através do trabalho terapêutico</p>
             
-            <div class="contact__container container grid">
-                <div class="contact__content">
-                    <p class="contact__description">
-                        Envie uma mensagem com seu nome completo, cidade e disponibilidade. 
-                        A partir disso, iniciaremos a triagem energética para construir suas sessões personalizadas.
-                    </p>
-                    <div class="contact__info">
-                        <div class="contact__card">
-                            <i class="fas fa-phone"></i>
-                            <h3>WhatsApp</h3>
-                            <span>(79) 99980-5488</span>
-                            <a href="https://contate.me/5579999805488" class="contact__button" target="_blank">
-                                <i class="fab fa-whatsapp"></i>
-                                Marcar Consulta
-                            </a>
+            <div class="testimonials__container container">
+                <div class="testimonials__grid">
+                    <!-- Depoimento 1 -->
+                    <article class="testimonials__card">
+                        <div class="testimonials__quote">"</div>
+                        <div class="testimonials__header">
+                            <img src="images/depoimento_1.jpg" alt="A.O" class="testimonials__img">
+                            <div class="testimonials__info">
+                                <h3 class="testimonials__name">A.O</h3>
+                                <span class="testimonials__client">Cliente</span>
+                            </div>
                         </div>
-                        
-                        <div class="contact__card">
-                            <i class="fas fa-envelope"></i>
-                            <h3>Email</h3>
-                            <span>alinevaiolet@gmail.com</span>
-                            <a href="mailto:alinevaiolet@gmail.com" class="contact__button">
-                                <i class="fas fa-paper-plane"></i>
-                                Enviar Email
-                            </a>
+                        <p class="testimonials__description">
+                            Conheci o trabalho da Terapeuta Aline Vaiolet, naquele momento eu estava com algumas dúvidas e pude ter uma melhor clareza emocional. Sentir uma paz espiritual que me trouxe um bem-estar. Só tenho a agradecer pela oportunidade de me acolher no meu momento de crise de ansiedade e me ajudar a olhar para algumas questões de ordem pessoal.
+                        </p>
+                        <div class="testimonials__stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
-                        
-                        <div class="contact__card">
-                            <i class="fab fa-instagram"></i>
-                            <h3>Instagram</h3>
-                            <span>@vaiolet.terapiafeminina</span>
-                            <a href="https://instagram.com/vaiolet.terapiafeminina" class="contact__button" target="_blank">
-                                <i class="fas fa-external-link-alt"></i>
-                                Seguir
-                            </a>
+                    </article>
+
+                    <!-- Depoimento 2 -->
+                    <article class="testimonials__card">
+                        <div class="testimonials__quote">"</div>
+                        <div class="testimonials__header">
+                            <img src="images/depoimento_2.jpg" alt="V.R" class="testimonials__img">
+                            <div class="testimonials__info">
+                                <h3 class="testimonials__name">V.R</h3>
+                                <span class="testimonials__client">Cliente</span>
+                            </div>
                         </div>
-                    </div>
+                        <p class="testimonials__description">
+                            Gostei muito da Terapia Multidimensional porque foi uma experiência bem diferente do que estava acostumada em termos de terapia. Eu estava exausta e foi como se as minhas baterias tivessem sido recarregadas. Durante o processo, além de um relaxamento profundo, percebi que meu corpo parecia dialogar com o trabalho energético que estava sendo feito. E o mais incrível foi que a Aline, ao final, trouxe percepções que casavam perfeitamente com o que eu estava sentindo naquele momento. Foi uma sessão muito bonita de conexão, autocuidado e autoconhecimento. Estou ansiosa para marcar outra! 🥰
+                        </p>
+                        <div class="testimonials__stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </article>
+
+                    <!-- Depoimento 3 -->
+                    <article class="testimonials__card">
+                        <div class="testimonials__quote">"</div>
+                        <div class="testimonials__header">
+                            <img src="images/depoimento_3.jpg" alt="A.S" class="testimonials__img">
+                            <div class="testimonials__info">
+                                <h3 class="testimonials__name">A.S</h3>
+                                <span class="testimonials__client">Cliente</span>
+                            </div>
+                        </div>
+                        <p class="testimonials__description">
+                            Fiz uma sessão de Mesa Radiônica e foi incrível! Trabalho feito com uma sensibilidade única para identificar bloqueios energéticos e trazer clareza e equilíbrio. Se você busca autoconhecimento e bem-estar, recomendo muito o trabalho.
+                        </p>
+                        <div class="testimonials__stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </article>
+
+                    <!-- Depoimento 4 -->
+                    <article class="testimonials__card">
+                        <div class="testimonials__quote">"</div>
+                        <div class="testimonials__header">
+                            <img src="images/depoimento_4.jpg" alt="S.M" class="testimonials__img">
+                            <div class="testimonials__info">
+                                <h3 class="testimonials__name">S.M</h3>
+                                <span class="testimonials__client">Cliente</span>
+                            </div>
+                        </div>
+                        <p class="testimonials__description">
+                            Seriedade, compromisso e empatia destacam-se nas inúmeras qualidades da terapeuta holística Aline Vaiolet. Costumo dizer que ela é "uma bruxa" para o bem, devido a sensibilidade que transborda em seus atendimentos. Trabalho, alma, mente e coração. Super recomendo!
+                        </p>
+                        <div class="testimonials__stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </article>
+
+                    <!-- Depoimento 5 -->
+                    <article class="testimonials__card">
+                        <div class="testimonials__quote">"</div>
+                        <div class="testimonials__header">
+                            <img src="images/depoimento_5.jpg" alt="T.G" class="testimonials__img">
+                            <div class="testimonials__info">
+                                <h3 class="testimonials__name">T.G</h3>
+                                <span class="testimonials__client">Cliente</span>
+                            </div>
+                        </div>
+                        <p class="testimonials__description">
+                            Fiz Barra de Acess com Aline e achei que foi sensacional para controle do meu quadro de ansiedade na época! Aline é muito atenciosa e faz seu trabalho com muito amor e como uma grande missão de vida para abençoar as pessoas! Em outro momento muito turbulento de luto também recebi um reiki de Aline que me fortaleceu muito com amor, sou muito grata!
+                        </p>
+                        <div class="testimonials__stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </article>
+
+                    <!-- Depoimento 6 -->
+                    <article class="testimonials__card">
+                        <div class="testimonials__quote">"</div>
+                        <div class="testimonials__header">
+                            <img src="images/depoimento_6.jpg" alt="Eli Santana" class="testimonials__img">
+                            <div class="testimonials__info">
+                                <h3 class="testimonials__name">Eli Santana</h3>
+                                <span class="testimonials__client">CEO do Espaço Zen</span>
+                            </div>
+                        </div>
+                        <p class="testimonials__description">
+                            Como CEO do ESPAÇO ZEN - Centro Terapêutico e Loja, posso testemunhar acerca do trabalho de Aline Vaiolet, como terapeuta vibracional, uma vez que a mesma já desenvolveu junto ao Espaço Zen diversas atividades coletivas, voltadas para o público feminino, com o direcionamento para as questões vibracionais, curas emocionais e liberações energéticas, todas elas com excelentes resultados, reconhecidos pelas participantes. Sou sempre muito grata pelos trabalhos desenvolvidos por Aline Vaiolet, no Espaço Zen. Somos um! ✨
+                        </p>
+                        <div class="testimonials__stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </article>
+
+                    <!-- Depoimento 7 -->
+                    <article class="testimonials__card">
+                        <div class="testimonials__quote">"</div>
+                        <div class="testimonials__header">
+                            <img src="images/depoimento_7.jpg" alt="Gabriela" class="testimonials__img">
+                            <div class="testimonials__info">
+                                <h3 class="testimonials__name">Gabriela</h3>
+                                <span class="testimonials__client">Proprietária da Coisas de Mulher</span>
+                            </div>
+                        </div>
+                        <p class="testimonials__description">
+                            Foi uma alegria enorme receber vc, Aline, aqui na minha loja Coisas de Mulher! O movimento feminino que vc realizou trouxe força, união e inspiração. Ver tantas mulheres reunidas, compartilhando histórias e aprendizados, foi transformador. Sua energia e dedicação contagiaram a todas nós. Sou muito grata por ter feito parte desse momento tão especial.
+                        </p>
+                        <div class="testimonials__stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </article>
+
+                    <!-- Depoimento 8 -->
+                    <article class="testimonials__card">
+                        <div class="testimonials__quote">"</div>
+                        <div class="testimonials__header">
+                            <img src="images/depoimento_8.jpg" alt="H.O" class="testimonials__img">
+                            <div class="testimonials__info">
+                                <h3 class="testimonials__name">H.O</h3>
+                                <span class="testimonials__client">Cliente</span>
+                            </div>
+                        </div>
+                        <p class="testimonials__description">
+                            É inspirador ver alguém que carrega consigo o dom da comunicação colocar essa luz a serviço da cura e do bem-estar dos outros. Sua sensibilidade, sua escuta e sua capacidade de traduzir em palavras aquilo que muitas vezes é invisível são presentes raros. Tenho certeza de que você vai tocar muitas vidas com carinho, sabedoria e verdade.
+                        </p>
+                        <div class="testimonials__stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </article>
+
+                    <!-- Depoimento 9 -->
+                    <article class="testimonials__card">
+                        <div class="testimonials__quote">"</div>
+                        <div class="testimonials__header">
+                            <img src="images/depoimento_9.jpg" alt="N.F" class="testimonials__img">
+                            <div class="testimonials__info">
+                                <h3 class="testimonials__name">N.F</h3>
+                                <span class="testimonials__client">Cliente</span>
+                            </div>
+                        </div>
+                        <p class="testimonials__description">
+                            Fazer terapia com Aline tem sido uma experiência maravilhosa. Tem me ajudado bastante a explorar meus sentimentos, pensamentos, padrões de comportamento e sobretudo a encontrar o equilíbrio interno e externo. Além de começar a ter um outro olhar para os acontecimentos em diversos aspectos da minha vida. Meu sentimento é de muita gratidão!
+                        </p>
+                        <div class="testimonials__stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </article>
                 </div>
-                
-                <form class="contact__form" id="contact-form">
-                    <div class="contact__form-div">
-                        <label class="contact__form-tag">Nome Completo</label>
-                        <input type="text" name="name" placeholder="Seu nome" class="contact__form-input" required>
-                    </div>
-                    
-                    <div class="contact__form-div">
-                        <label class="contact__form-tag">Email</label>
-                        <input type="email" name="email" placeholder="seu@email.com" class="contact__form-input" required>
-                    </div>
-                    
-                    <div class="contact__form-div">
-                        <label class="contact__form-tag">Cidade</label>
-                        <input type="text" name="city" placeholder="Sua cidade" class="contact__form-input">
-                    </div>
-                    
-                    <div class="contact__form-div">
-                        <label class="contact__form-tag">Disponibilidade</label>
-                        <textarea name="availability" placeholder="Ex: Segunda à tarde, Quarta de manhã..." class="contact__form-input" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="button button--primary contact__form-button">
-                        <i class="fas fa-paper-plane"></i>
-                        Enviar Mensagem
-                    </button>
-                </form>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer__container container grid">
+        <div class="footer__container container">
             <div class="footer__content">
                 <div class="footer__logo">
                     <img src="images/logo_aline_vaiolet.png" alt="Aline Vaiolet" class="footer__logo-img">
@@ -549,7 +568,8 @@
                     <li><a href="#home" class="footer__link">Início</a></li>
                     <li><a href="#about" class="footer__link">Quem Sou Eu</a></li>
                     <li><a href="#services" class="footer__link">Serviços</a></li>
-                    <li><a href="#methodology" class="footer__link">Objetivo</a></li>
+                    <li><a href="#methodology" class="footer__link">Metodologia</a></li>
+                    <li><a href="#testimonials" class="footer__link">Depoimentos</a></li>
                     <li><a href="#contact" class="footer__link">Contato</a></li>
                 </ul>
             </div>
@@ -569,47 +589,5 @@
             <p>&copy; 2024 Aline Vaiolet. Todos os direitos reservados.</p>
         </div>
     </footer>
-
-    <!-- Scroll Up -->
-    <a href="#" class="scrollup" id="scroll-up">
-        <i class="fas fa-arrow-up scrollup__icon"></i>
-    </a>
-
-    <!-- JavaScript -->
-    <script src="js/main.js"></script>
-    
-    <!-- Script para depoimentos -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.testimonials__card');
-            const prevBtn = document.querySelector('.testimonials__button--prev');
-            const nextBtn = document.querySelector('.testimonials__button--next');
-            let currentIndex = 0;
-
-            function showCard(index) {
-                cards.forEach((card, i) => {
-                    card.classList.toggle('active', i === index);
-                });
-            }
-
-            // Inicializar
-            showCard(currentIndex);
-
-            // Event listeners
-            if (nextBtn) {
-                nextBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex + 1) % cards.length;
-                    showCard(currentIndex);
-                });
-            }
-
-            if (prevBtn) {
-                prevBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex - 1 + cards.length) % cards.length;
-                    showCard(currentIndex);
-                });
-            }
-        });
-    </script>
 </body>
 </html>
