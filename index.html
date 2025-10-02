@@ -15,6 +15,21 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
     
+    <!-- CSS para depoimentos -->
+    <style>
+        .testimonials__card {
+            display: none;
+        }
+        .testimonials__card.active {
+            display: block;
+        }
+        .testimonials__card {
+            display: block !important;
+            opacity: 1 !important;
+            margin: 0 auto;
+        }
+    </style>
+    
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -347,109 +362,176 @@
         </section>
 
         <!-- Testimonials -->
-   <section class="testimonials section" id="testimonials">
-  <h2 class="section__title">Transformações Reais</h2>
-  <p class="section__subtitle">Histórias de quem encontrou sua luz interior</p>
+        <section class="testimonials section" id="testimonials">
+            <h2 class="section__title">Transformações Reais</h2>
+            <p class="section__subtitle">Histórias de quem encontrou sua luz interior</p>
 
-  <div class="testimonials__container container">
-    <div class="testimonials__content">
-      <article class="testimonials__card">
-        <div class="testimonials__img">
-          <img src="images/depoimento_1.jpg" alt="M. S.">
-        </div>
-        <div class="testimonials__data">
-          <h3 class="testimonials__name">M. S.</h3>
-          <span class="testimonials__client">Empresária, 35 anos</span>
-          <p class="testimonials__description">
-            "A terapia quântica com Aline transformou completamente minha vida..."
-          </p>
-          <div class="testimonials__stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            <i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-        </div>
-      </article>
+            <div class="testimonials__container container">
+                <div class="testimonials__content">
+                    <article class="testimonials__card">
+                        <div class="testimonials__img">
+                            <img src="images/depoimento_1.jpg" alt="A.O">
+                        </div>
+                        <div class="testimonials__data">
+                            <h3 class="testimonials__name">A.O</h3>
+                            <span class="testimonials__client">Cliente</span>
+                            <p class="testimonials__description">
+                                "Conheci o trabalho da Terapeuta Aline Vaiolet, naquele momento eu estava com algumas dúvidas e pude ter uma melhor clareza emocional. Sentir uma paz espiritual que me trouxe um bem-estar. Só tenho a agradecer pela oportunidade de me acolher no meu momento de crise de ansiedade e me ajudar a olhar para algumas questões de ordem pessoal."
+                            </p>
+                            <div class="testimonials__stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </article>
 
-      <article class="testimonials__card">
-        <div class="testimonials__img">
-          <img src="images/depoimento_2.jpg" alt="J. S.">
-        </div>
-        <div class="testimonials__data">
-          <h3 class="testimonials__name">J. S.</h3>
-          <span class="testimonials__client">Professora, 42 anos</span>
-          <p class="testimonials__description">
-            "O trabalho de cura ancestral me ajudou a liberar traumas profundos..."
-          </p>
-          <div class="testimonials__stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            <i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-        </div>
-      </article>
+                    <article class="testimonials__card">
+                        <div class="testimonials__img">
+                            <img src="images/depoimento_2.jpg" alt="V.R">
+                        </div>
+                        <div class="testimonials__data">
+                            <h3 class="testimonials__name">V.R</h3>
+                            <span class="testimonials__client">Cliente</span>
+                            <p class="testimonials__description">
+                                "Gostei muito da Terapia Multidimensional porque foi uma experiência bem diferente do que estava acostumada em termos de terapia. Eu estava exausta e foi como se as minhas baterias tivessem sido recarregadas. Durante o processo, além de um relaxamento profundo, percebi que meu corpo parecia dialogar com o trabalho energético que estava sendo feito. E o mais incrível foi que a Aline, ao final, trouxe percepções que casavam perfeitamente com o que eu estava sentindo naquele momento. Foi uma sessão muito bonita de conexão, autocuidado e autoconhecimento. Estou ansiosa para marcar outra! 🥰"
+                            </p>
+                            <div class="testimonials__stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </article>
 
-      <article class="testimonials__card">
-        <div class="testimonials__img">
-          <img src="images/depoimento_3.jpg" alt="A. C.">
-        </div>
-        <div class="testimonials__data">
-          <h3 class="testimonials__name">A. C.</h3>
-          <span class="testimonials__client">Artista, 28 anos</span>
-          <p class="testimonials__description">
-            "Os rituais de iluminação despertaram minha criatividade de forma incrível..."
-          </p>
-          <div class="testimonials__stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            <i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-        </div>
-      </article>
-    </div>
+                    <article class="testimonials__card">
+                        <div class="testimonials__img">
+                            <img src="images/depoimento_3.jpg" alt="A.S">
+                        </div>
+                        <div class="testimonials__data">
+                            <h3 class="testimonials__name">A.S</h3>
+                            <span class="testimonials__client">Cliente</span>
+                            <p class="testimonials__description">
+                                "Fiz uma sessão de Mesa Radiônica e foi incrível! Trabalho feito com uma sensibilidade única para identificar bloqueios energéticos e trazer clareza e equilíbrio. Se você busca autoconhecimento e bem-estar, recomendo muito o trabalho."
+                            </p>
+                            <div class="testimonials__stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </article>
 
-    <div class="testimonials__navigation">
-      <button class="testimonials__button testimonials__button--prev">
-        <i class="fas fa-chevron-left"></i>
-      </button>
-      <button class="testimonials__button testimonials__button--next">
-        <i class="fas fa-chevron-right"></i>
-      </button>
-    </div>
-  </div>
-</section>
+                    <article class="testimonials__card">
+                        <div class="testimonials__img">
+                            <img src="images/depoimento_4.jpg" alt="S.M">
+                        </div>
+                        <div class="testimonials__data">
+                            <h3 class="testimonials__name">S.M</h3>
+                            <span class="testimonials__client">Cliente</span>
+                            <p class="testimonials__description">
+                                "Seriedade, compromisso e empatia destacam-se nas inúmeras qualidades da terapeuta holística Aline Vaiolet. Costumo dizer que ela é 'uma bruxa' para o bem, devido a sensibilidade que transborda em seus atendimentos. Trabalho, alma, mente e coração. Super recomendo!"
+                            </p>
+                            <div class="testimonials__stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </article>
 
-<style>
-  .testimonials__card {
-    display: none;
-  }
-  .testimonials__card.active {
-    display: block;
-  }
-</style>
+                    <article class="testimonials__card">
+                        <div class="testimonials__img">
+                            <img src="images/depoimento_5.jpg" alt="T.G">
+                        </div>
+                        <div class="testimonials__data">
+                            <h3 class="testimonials__name">T.G</h3>
+                            <span class="testimonials__client">Cliente</span>
+                            <p class="testimonials__description">
+                                "Fiz Barra de Acess com Aline e achei que foi sensacional para controle do meu quadro de ansiedade na época! Aline é muito atenciosa e faz seu trabalho com muito amor e como uma grande missão de vida para abençoar as pessoas! Em outro momento muito turbulento de luto também recebi um reiki de Aline que me fortaleceu muito com amor, sou muito grata!"
+                            </p>
+                            <div class="testimonials__stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </article>
 
-<script>
-  const cards = document.querySelectorAll('.testimonials__card');
-  const prevBtn = document.querySelector('.testimonials__button--prev');
-  const nextBtn = document.querySelector('.testimonials__button--next');
-  let currentIndex = 0;
+                    <article class="testimonials__card">
+                        <div class="testimonials__img">
+                            <img src="images/depoimento_6.jpg" alt="Eli Santana">
+                        </div>
+                        <div class="testimonials__data">
+                            <h3 class="testimonials__name">Eli Santana</h3>
+                            <span class="testimonials__client">CEO do Espaço Zen</span>
+                            <p class="testimonials__description">
+                                "Como CEO do ESPAÇO ZEN - Centro Terapêutico e Loja, posso testemunhar acerca do trabalho de Aline Vaiolet, como terapeuta vibracional, uma vez que a mesma já desenvolveu junto ao Espaço Zen diversas atividades coletivas, voltadas para o público feminino, com o direcionamento para as questões vibracionais, curas emocionais e liberações energéticas, todas elas com excelentes resultados, reconhecidos pelas participantes. Sou sempre muito grata pelos trabalhos desenvolvidos por Aline Vaiolet, no Espaço Zen. Somos um! ✨"
+                            </p>
+                            <div class="testimonials__stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </article>
 
-  function showCard(index) {
-    cards.forEach((card, i) => {
-      card.classList.toggle('active', i === index);
-    });
-  }
+                    <article class="testimonials__card">
+                        <div class="testimonials__img">
+                            <img src="images/depoimento_7.jpg" alt="Gabriela">
+                        </div>
+                        <div class="testimonials__data">
+                            <h3 class="testimonials__name">Gabriela</h3>
+                            <span class="testimonials__client">Proprietária da Coisas de Mulher</span>
+                            <p class="testimonials__description">
+                                "Foi uma alegria enorme receber vc, Aline, aqui na minha loja Coisas de Mulher! O movimento feminino que vc realizou trouxe força, união e inspiração. Ver tantas mulheres reunidas, compartilhando histórias e aprendizados, foi transformador. Sua energia e dedicação contagiaram a todas nós. Sou muito grata por ter feito parte desse momento tão especial."
+                            </p>
+                            <div class="testimonials__stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </article>
 
-  showCard(currentIndex);
+                    <article class="testimonials__card">
+                        <div class="testimonials__img">
+                            <img src="images/depoimento_8.jpg" alt="H.O">
+                        </div>
+                        <div class="testimonials__data">
+                            <h3 class="testimonials__name">H.O</h3>
+                            <span class="testimonials__client">Cliente</span>
+                            <p class="testimonials__description">
+                                "É inspirador ver alguém que carrega consigo o dom da comunicação colocar essa luz a serviço da cura e do bem-estar dos outros. Sua sensibilidade, sua escuta e sua capacidade de traduzir em palavras aquilo que muitas vezes é invisível são presentes raros. Tenho certeza de que você vai tocar muitas vidas com carinho, sabedoria e verdade."
+                            </p>
+                            <div class="testimonials__stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </article>
 
-  nextBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % cards.length;
-    showCard(currentIndex);
-  });
+                    <article class="testimonials__card">
+                        <div class="testimonials__img">
+                            <img src="images/depoimento_9.jpg" alt="N.F">
+                        </div>
+                        <div class="testimonials__data">
+                            <h3 class="testimonials__name">N.F</h3>
+                            <span class="testimonials__client">Cliente</span>
+                            <p class="testimonials__description">
+                                "Fazer terapia com Aline tem sido uma experiência maravilhosa. Tem me ajudado bastante a explorar meus sentimentos, pensamentos, padrões de comportamento e sobretudo a encontrar o equilíbrio interno e externo. Além de começar a ter um outro olhar para os acontecimentos em diversos aspectos da minha vida. Meu sentimento é de muita gratidão!"
+                            </p>
+                            <div class="testimonials__stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </article>
+                </div>
 
-  prevBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + cards.length) % cards.length;
-    showCard(currentIndex);
-  });
-</script>
-</section>
+                <div class="testimonials__navigation">
+                    <button class="testimonials__button testimonials__button--prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="testimonials__button testimonials__button--next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
 
         <!-- Contact -->
         <section class="contact section" id="contact">
@@ -580,10 +662,39 @@
 
     <!-- JavaScript -->
     <script src="js/main.js"></script>
+    
+    <!-- Script para depoimentos -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.testimonials__card');
+            const prevBtn = document.querySelector('.testimonials__button--prev');
+            const nextBtn = document.querySelector('.testimonials__button--next');
+            let currentIndex = 0;
+
+            function showCard(index) {
+                cards.forEach((card, i) => {
+                    card.classList.toggle('active', i === index);
+                });
+            }
+
+            // Inicializar
+            showCard(currentIndex);
+
+            // Event listeners
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex + 1) % cards.length;
+                    showCard(currentIndex);
+                });
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+                    showCard(currentIndex);
+                });
+            }
+        });
+    </script>
 </body>
-    .testimonials__card {
-  display: block !important;
-  opacity: 1 !important;
-  margin: 0 auto;
-}
 </html>
